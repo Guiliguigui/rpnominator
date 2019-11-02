@@ -107,10 +107,6 @@ data = {
             },
         }
 
-
-def ajouterUnivers(data):
-    return
-
 def afficherResultat():
     nomCompletRP = trouverNomRP(univers.get(),prenom.get(),nom.get(),data)
     lblQuestion.configure(text="What is your %s Name?" % univers.get())
@@ -137,9 +133,6 @@ lstbUnivers = Combobox(root, textvariable = univers, state='readonly', values=li
 lstbUnivers.grid(column=1,row=1,columnspan=2)
 lstbUnivers.current(0)
 
-btnAddUnivers = Button(root, text = 'Ajouter Univers', command = ajouterUnivers(data))
-btnAddUnivers.grid(column=3,row=1)
-
 lblPrenom = Label(root, text = "Prenom :",justify = "left")
 lblPrenom.grid(column=0,row=2)
 
@@ -165,6 +158,5 @@ lblRPName.grid(column=0,row=5,columnspan=4)
 
 btnGO = Button(root, text = "GO", command = afficherResultat)
 btnGO.grid(column=1,row=3,columnspan=2)
-
 
 root.mainloop()
