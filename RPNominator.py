@@ -1,10 +1,11 @@
 from tkinter import *
 from tkinter.ttk import *
+from RPFunctions import *
 
 data = {
             'Leprechaun' : {
-                'numLettreNom' : 1,
-                'numLettrePrenom' : 3,
+                'numLettreNom' : 0,
+                'numLettrePrenom' : 2,
                 'Prenom' : {
                     'A' : 'Sprinkles',  'N' : 'Greenie',
                     'B' : 'Daffodil',   'O' : 'Rusty',
@@ -37,8 +38,8 @@ data = {
                 },
             },
             'Youtuber' : {
-                'numLettreNom' : 3,
-                'numLettrePrenom' : 1,
+                'numLettreNom' : 2,
+                'numLettrePrenom' : 0,
                 'Prenom' : {
                     'A' : 'Alpaga',     'N' : 'Mega',
                     'B' : 'Piaf',       'O' : 'Ultra',
@@ -71,8 +72,8 @@ data = {
                 },
             },
             'SuperHero' : {
-                'numLettreNom' : 2,
-                'numLettrePrenom' : 1,
+                'numLettreNom' : 1,
+                'numLettrePrenom' : 0,
                 'Prenom' : {
                     'A' : 'Captain',    'N' : 'Impossible',
                     'B' : 'Night',      'O' : 'Iron',
@@ -106,10 +107,15 @@ data = {
             },
         }
 
+
 def ajouterUnivers(data):
     return
-def trouverNomRP(univers,prenom,nom,data):
-    return
+
+def afficherResultat():
+    nomCompletRP = trouverNomRP(univers.get(),prenom.get(),nom.get(),data)
+    lblQuestion.configure(text="What is your %s Name?" % univers.get())
+    lblRPName.configure(text=nomCompletRP)
+    
 
 root = Tk()
 root.title("RPNominator")
@@ -129,6 +135,7 @@ lblUnivers.grid(column=0,row=1)
 univers = StringVar()
 lstbUnivers = Combobox(root, textvariable = univers, state='readonly', values=list(data.keys()))
 lstbUnivers.grid(column=1,row=1,columnspan=2)
+lstbUnivers.current(0)
 
 btnAddUnivers = Button(root, text = 'Ajouter Univers', command = ajouterUnivers(data))
 btnAddUnivers.grid(column=3,row=1)
@@ -149,13 +156,15 @@ nom.set("Dupont")
 entNom = Entry(root, textvariable = nom)
 entNom.grid(column=3,row=2)
 
-btnGO = Button(root, text = "GO", command = trouverNomRP(univers,prenom,nom,data))
-btnGO.grid(column=1,row=3,columnspan=2)
 
 lblQuestion = Label(root, text="What is your ____ Name?", justify = "center", font=("Impact",15))
 lblQuestion.grid(column=0,row=4,columnspan=4)
 
 lblRPName = Label(root, text="_____ _____", justify = "center", font=("Impact",15))
 lblRPName.grid(column=0,row=5,columnspan=4)
+
+btnGO = Button(root, text = "GO", command = afficherResultat)
+btnGO.grid(column=1,row=3,columnspan=2)
+
 
 root.mainloop()
