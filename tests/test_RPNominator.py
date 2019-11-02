@@ -1,13 +1,13 @@
 import unittest
-from RPNominator import trouverNomRP
+from RPFunctions import trouverNomRP
 
 class TestRPNominator(unittest.TestCase):
 
     def setUp(self):
         self.data = {
             'Leprechaun' : {
-                'numLettreNom' : 1,
-                'numLettrePrenom' : 3,
+                'numLettreNom' : 0,
+                'numLettrePrenom' : 2,
                 'Prenom' : {
                     'A' : 'Sprinkles',  'N' : 'Greenie',
                     'B' : 'Daffodil',   'O' : 'Rusty',
@@ -40,8 +40,8 @@ class TestRPNominator(unittest.TestCase):
                 },
             },
             'Youtuber' : {
-                'numLettreNom' : 3,
-                'numLettrePrenom' : 1,
+                'numLettreNom' : 2,
+                'numLettrePrenom' : 0,
                 'Prenom' : {
                     'A' : 'Alpaga',     'N' : 'Mega',
                     'B' : 'Piaf',       'O' : 'Ultra',
@@ -74,8 +74,8 @@ class TestRPNominator(unittest.TestCase):
                 },
             },
             'SuperHero' : {
-                'numLettreNom' : 2,
-                'numLettrePrenom' : 1,
+                'numLettreNom' : 1,
+                'numLettrePrenom' : 0,
                 'Prenom' : {
                     'A' : 'Captain',    'N' : 'Impossible',
                     'B' : 'Night',      'O' : 'Iron',
